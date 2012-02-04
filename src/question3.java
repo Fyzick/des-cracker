@@ -35,8 +35,11 @@ public class question3 {
         keyBytes = new byte [] {(byte) 0x01, (byte) 0x23, (byte) 0x45, (byte) 0x67, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00};
         ct = new byte [] {(byte) 0x20, (byte) 0xAD, (byte) 0xFD, (byte) 0xBF, (byte) 0x1B, (byte) 0xB6, (byte) 0x9F, (byte) 0x4B};
         int counter = 1;
+        try{
+        	
         for(int i = 0; i < 256; i++)
         {
+        	cipher = Cipher.getInstance("DES/ECB/NoPadding");
             counter = 1;
             System.out.println("Bit 5 incremented");
             for (int j = 0; j < 256; j++)
@@ -50,9 +53,7 @@ public class question3 {
                     for (int l = 0; l <256; l++)
                     {
                         key = new SecretKeySpec(keyBytes, "DES");
-                        try
-                        {
-                            cipher = Cipher.getInstance("DES/ECB/NoPadding");
+                            
                             cipher.init(Cipher.DECRYPT_MODE, key);
                             pt = cipher.doFinal(ct);
                            
@@ -63,12 +64,7 @@ public class question3 {
                                 System.out.println("answer");
                             }
                             //printByteArray(keyBytes);
-                           
-                        }
-                        catch(Exception e)
-                        {
-                            e.printStackTrace();
-                        }
+
                         keyBytes[7] = (byte) (keyBytes[7] + 1);
                     }
                     keyBytes[6] = (byte) (keyBytes[6] + 1);
@@ -79,6 +75,11 @@ public class question3 {
             keyBytes[4] = (byte) (keyBytes[4] + 1);
            
         }
-       
+       //delimits last for loop
+    }
+    catch(Exception e)
+                        {
+                            e.printStackTrace();
+                        }
     }
 }

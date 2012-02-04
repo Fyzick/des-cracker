@@ -67,14 +67,14 @@ public class question3 {
                             }
                             //printByteArray(keyBytes);
 
-                        keyBytes[7] = (byte) (keyBytes[4] + 1);
+                        keyBytes[4] = (byte) (keyBytes[4] + 1);
                     }
-                    keyBytes[6] = (byte) (keyBytes[5] + 1);
+                    keyBytes[5] = (byte) (keyBytes[5] + 1);
                 }
-                keyBytes[5] = (byte) (keyBytes[6] + 1);
+                keyBytes[6] = (byte) (keyBytes[6] + 1);
                 counter++;
             }
-            keyBytes[4] = (byte) (keyBytes[7] + 1);
+            keyBytes[7] = (byte) (keyBytes[7] + 1);
            counter2++;
         }
        //delimits last for loop

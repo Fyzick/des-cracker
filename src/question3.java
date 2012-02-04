@@ -63,6 +63,7 @@ public class question3 {
                             if (new String(pt).equals("Plaintxt"))
                             {
                                 printByteArray(keyBytes);
+                                printByteArray(pt);
                                 System.out.println("answer");
                                 System.exit(0);
                             }

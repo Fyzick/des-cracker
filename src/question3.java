@@ -35,16 +35,18 @@ public class question3 {
         keyBytes = new byte [] {(byte) 0x01, (byte) 0x23, (byte) 0x45, (byte) 0x67, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00};
         ct = new byte [] {(byte) 0x20, (byte) 0xAD, (byte) 0xFD, (byte) 0xBF, (byte) 0x1B, (byte) 0xB6, (byte) 0x9F, (byte) 0x4B};
         int counter = 1;
+        int counter2 = 0;
         try{
         	
         for(int i = 0; i < 256; i++)
         {
         	cipher = Cipher.getInstance("DES/ECB/NoPadding");
             counter = 1;
-            System.out.println("Bit 5 incremented");
+            System.out.println("Byte 4 incremented "+counter2+" times");
             for (int j = 0; j < 256; j++)
             {
-                System.out.println(counter);
+            	if (counter % 50 == 0)
+            		System.out.println(counter);
                 //printByteArray(keyBytes);
                
                
@@ -65,15 +67,15 @@ public class question3 {
                             }
                             //printByteArray(keyBytes);
 
-                        keyBytes[7] = (byte) (keyBytes[7] + 1);
+                        keyBytes[7] = (byte) (keyBytes[4] + 1);
                     }
-                    keyBytes[6] = (byte) (keyBytes[6] + 1);
+                    keyBytes[6] = (byte) (keyBytes[5] + 1);
                 }
-                keyBytes[5] = (byte) (keyBytes[5] + 1);
+                keyBytes[5] = (byte) (keyBytes[6] + 1);
                 counter++;
             }
-            keyBytes[4] = (byte) (keyBytes[4] + 1);
-           
+            keyBytes[4] = (byte) (keyBytes[7] + 1);
+           counter2++;
         }
        //delimits last for loop
     }

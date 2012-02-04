@@ -64,6 +64,7 @@ public class question3 {
                             {
                                 printByteArray(keyBytes);
                                 System.out.println("answer");
+                                System.exit(0);
                             }
                             //printByteArray(keyBytes);
 
